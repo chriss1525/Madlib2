@@ -8,12 +8,12 @@ This Game uses the Datamuse API to pick random words eliminating the need to hav
 
 ### clone the repo
 
-[git clone](https://github.com/chriss1525/Madlib2)
+'''git clone https://github.com/chriss1525/Madlib2
 
-[cd](Madlib2)
+'''cd Madlib2)
 
-[python3](madlib.py)
+'''python3 madlib.py)
 
 #### or
 
-[excecute](./madlib.py)
+'''./madlib.py
