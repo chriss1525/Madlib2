@@ -2,19 +2,43 @@
 import requests
 import random
 
-url = "https://api.datamuse.com/words?sp=*n*&max=1000"
-word = requests.get(url,)
+nouns = "https://api.datamuse.com/words?sp=*n*"
+verbs = "https://api.datamuse.com/words?sp=*v*"
+# Adjectives = "https://api.datamuse.com/words?sp=*adj*&max=1000"
+# Adverbs = "https://api.datamuse.com/words?sp=*adv*&max=1000"
+noun = requests.get(nouns,)
+verb = requests.get(verbs,)
 
-subject = input("type any noun:\n")
-verb = input("type any verb:\n")
+print("pick random noun?")
+yes = input("y/n\n")
+if yes == 'y':
+        data = noun.json()
+        word = [d['word'] for d in data]  # Extract all the words
+        subject = random.choice(word)  # Pick a random word
+        print("{}".format(subject))
+elif yes == 'n':
+    subject = input("type any noun:\n")
+else:
+    raise TypeError("Please pick Y or N")
+print("pick random verb?")
+yes = input("y/n\n")
+if yes == 'y':
+        data = verb.json()
+        word = [d['word'] for d in data]  # Extract all the words
+        verb = random.choice(word)  # Pick a random word
+        print("{}".format(verb))
+elif yes == 'n':
+    verb = input("type any verb:\n")
+else:
+    raise TypeError("Please pick Y or N")
+print("pick a random noun?")
+yes = input("y/n\n")
+if yes == 'y':
+        data = noun.json()
+        word = [d['word'] for d in data]  # Extract all the words
+        object = random.choice(word)  # Pick a random word
+        print("{}".format(object))
 
 print("{}".format(subject), end=" ")
 print("{}".format(verb), end=" ")
-if word.status_code != 200:
-    print("Error: API returned status code {}".format(word.status_code))
-    print(word.text)
-else:
-    data = word.json()
-    nouns = [d['word'] for d in data]  # Extract all the nouns
-    chosen_noun = random.choice(nouns)  # Pick a random noun
-    print("{}".format(chosen_noun))
+print("{}".format(object))
