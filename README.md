@@ -24,6 +24,7 @@ Install the wonderwords package by running `pip install wonderwords`.
 - Randomly generated words: players can choose to have words randomly generated for them by the wonderwords package.
 - Custom words: players can input their own words to use in the story.
 - Grammar and sentence structure: the game ensures that the story generated is grammatically correct and follows proper sentence structure.
+  >ps sentences are grammarticaly correct not semantically correct
 
 ### Contributing
 
