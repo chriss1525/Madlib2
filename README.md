@@ -15,16 +15,15 @@ Install the wonderwords package by running `pip install wonderwords`.
 ### Usage
 
 - Open your terminal and navigate to the directory where the madlibs.py file is located.
-- Run the command python3 madlibs.py.
+- Run the command python3 madlib.py.
 - Follow the prompts to choose between randomly generated words or inputting your own words.
-- Once all words have been inputted, a story will be generated using the words provided.
+- Once all words have been inputted, a sentence, clause or phrase will be generated using the words provided.
 
 ### Features
 
 - Randomly generated words: players can choose to have words randomly generated for them by the wonderwords package.
 - Custom words: players can input their own words to use in the story.
 - Grammar and sentence structure: the game ensures that the story generated is grammatically correct and follows proper sentence structure.
-- Storytelling prompts: players can choose to have a storytelling prompt generated for them to help inspire their story.
 
 ### Contributing
 
