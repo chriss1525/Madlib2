@@ -1,44 +1,78 @@
 #!/usr/bin/python3
-import requests
+from wonderwords import RandomWord
 import random
 
-nouns = "https://api.datamuse.com/words?sp=*n*"
-verbs = "https://api.datamuse.com/words?sp=*v*"
-# Adjectives = "https://api.datamuse.com/words?sp=*adj*&max=1000"
-# Adverbs = "https://api.datamuse.com/words?sp=*adv*&max=1000"
-noun = requests.get(nouns,)
-verb = requests.get(verbs,)
+rw = RandomWord()
 
-print("pick random noun?")
-yes = input("y/n\n")
-if yes == 'y':
-        data = noun.json()
-        word = [d['word'] for d in data]  # Extract all the words
-        subject = random.choice(word)  # Pick a random word
+articles = ['the', 'a', 'an']
+adjectives = ['red', 'happy', 'large', 'bumpy', 'silly', 'fancy']
+adverbs = ['quickly', 'happily', 'loudly', 'slowly', 'gently', 'eagerly']
+
+print("Welcome to the Random Phrase Generator Game!\n")
+
+while True:
+    print("Enter 'q' to quit the game or any key to continue:")
+    response = input()
+    if response == 'q':
+        break
+
+    # Generate subject
+    print("Do you want a random noun for the subject?")
+    response = input("Enter 'y' or 'n': ")
+    if response == 'y':
+        subject = rw.word(include_parts_of_speech=["nouns"])
         print("{}".format(subject))
-elif yes == 'n':
-    subject = input("type any noun:\n")
-else:
-    raise TypeError("Please pick Y or N")
-print("pick random verb?")
-yes = input("y/n\n")
-if yes == 'y':
-        data = verb.json()
-        word = [d['word'] for d in data]  # Extract all the words
-        verb = random.choice(word)  # Pick a random word
-        print("{}".format(verb))
-elif yes == 'n':
-    verb = input("type any verb:\n")
-else:
-    raise TypeError("Please pick Y or N")
-print("pick a random noun?")
-yes = input("y/n\n")
-if yes == 'y':
-        data = noun.json()
-        word = [d['word'] for d in data]  # Extract all the words
-        object = random.choice(word)  # Pick a random word
-        print("{}".format(object))
+    elif response == 'n':
+        subject = input("Enter a noun for the subject: ")
+        print("{}".format(subject))
+    else:
+        print("Invalid input. Please enter 'y' or 'n'.")
+        continue
 
-print("{}".format(subject), end=" ")
-print("{}".format(verb), end=" ")
-print("{}".format(object))
+    # Generate verb
+    print("Do you want a random verb for the predicate?")
+    response = input("Enter 'y' or 'n': ")
+    if response == 'y':
+        verb = rw.word(include_parts_of_speech=["verbs"])
+        print("{}".format(verb))
+    elif response == 'n':
+        verb = input("Enter a verb for the predicate: ")
+        print("{}".format(verb))
+    else:
+        print("Invalid input. Please enter 'y' or 'n'.")
+        continue
+
+    # Generate object
+    print("Do you want a random noun for the object?")
+    response = input("Enter 'y' or 'n': ")
+    if response == 'y':
+        obj = rw.word(include_parts_of_speech=["nouns"])
+        print("{}".format(object))
+    elif response == 'n':
+        obj = input("Enter a noun for the object: ")
+        print("{}".format(object))
+    else:
+        print("Invalid input. Please enter 'y' or 'n'.")
+        continue
+
+    # Generate article, adjective, and adverb
+    article = random.choice(articles)
+    adjective = random.choice(adjectives)
+    adverb = random.choice(adverbs)
+
+    # Construct phrase, clause, or sentence based on user choice
+    print("Do you want a phrase, clause, or sentence?")
+    response = input("Enter 'p', 'c', or 's': ")
+    if response == 'p':
+        phrase = "{} {} {}".format(article, adjective, subject)
+        print("{}".format(phrase))
+    elif response == 'c':
+        clause = "{} {} {} {}".format(adverb, subject, verb, obj)
+        print("{}".format(clause))
+    elif response == 's':
+        sentence = "{} {} {} {} {} {}".format(
+            article, adjective, subject, verb, article, obj)
+        print("{}".format(sentence))
+    else:
+        print("Invalid input. Please enter 'p', 'c', or 's'.")
+        continue
